@@ -6,10 +6,10 @@ import processing.core.PApplet;
  * Representa o terreno onde a simulação ocorre. É modelado como uma grelha 2D com diferentes estados.
  */
 public class Terrain {
-    private int rows, cols; // Dimensões da grelha
-    private int[][] grid; // Representação do estado de cada célula
+    private final int rows, cols; // Dimensões da grelha
+    private final int[][] grid; // Representação do estado de cada célula
     private int[] stateColors; // Cores associadas aos estados
-    private PApplet p;
+    private final PApplet p;
 
     public static final int EMPTY = 0; // Estado vazio
     public static final int FERTILE = 1; // Estado fértil
@@ -85,5 +85,69 @@ public class Terrain {
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
             grid[row][col] = (grid[row][col] + 1) % 4; // Alterna entre os estados
         }
+    }
+
+    /**
+     * Verifica se há uma presa na célula especificada.
+     *
+     * @param x Coordenada x da célula.
+     * @param y Coordenada y da célula.
+     * @return True se houver uma presa na célula, False caso contrário.
+     */
+    public boolean hasPreyAt(int x, int y) {
+        // Exemplo: Simula uma verificação com base no estado da célula
+        return grid[y][x] == FOOD;
+    }
+
+    /**
+     * Remove uma presa da célula especificada.
+     *
+     * @param x Coordenada x da célula.
+     * @param y Coordenada y da célula.
+     */
+    public void removePrey(int x, int y) {
+        if (grid[y][x] == FOOD) {
+            grid[y][x] = FERTILE; // Altera o estado da célula para fértil após remoção
+        }
+    }
+
+    /**
+     * Obtém o estado de uma célula no terreno.
+     *
+     * @param x Coordenada x da célula.
+     * @param y Coordenada y da célula.
+     * @return O estado da célula.
+     */
+    public int getState(int x, int y) {
+        return grid[y][x];
+    }
+
+    /**
+     * Define o estado de uma célula no terreno.
+     *
+     * @param x     Coordenada x da célula.
+     * @param y     Coordenada y da célula.
+     * @param state Novo estado para a célula.
+     */
+    public void setState(int x, int y, int state) {
+        grid[y][x] = state;
+    }
+
+    /**
+     * Obtém o número de colunas do terreno.
+     *
+     * @return Número de colunas.
+     */
+    public int getCols() {
+        return cols;
+    }
+
+    /**
+     * Obtém o número de linhas do terreno.
+     *
+     * @return Número de linhas.
+     */
+    public int getRows() {
+        return rows;
     }
 }
