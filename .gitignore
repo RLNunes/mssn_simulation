@@ -1,0 +1,39 @@
+# Diretório de compilação
+/out/
+
+# Configurações do IntelliJ IDEA
+.idea/
+*.iml
+
+# Ficheiros do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ficheiros de log
+*.log
+
+# Configurações específicas de ambiente
+*.class
+*.war
+*.ear
+*.jar
+
+# Ficheiros de teste
+/test-output/
+
+# Outros ficheiros temporários
+*.tmp
+*.swp
+
+# Dependências externas (caso estejam incluídas localmente)
+lib/
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Configuração do editor
+.vscode/
